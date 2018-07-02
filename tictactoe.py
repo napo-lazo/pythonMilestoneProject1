@@ -43,6 +43,12 @@ def playerTurn(cellValues, currentPlayer):
 	else:
 		cellValues[cell - 1] = players[currentPlayer]
 
+def fullBoard(cellValues):
+	for x in range(0,9):
+		if cellValues[x] == " ":
+			return False
+	return True
+
 #Checks at the end of the player turns if there is a winner
 def checkWinner(cellValues,currentPlayer):
 	for x in range(0,9):
@@ -63,6 +69,10 @@ def checkWinner(cellValues,currentPlayer):
 				if cellValues[x] == cellValues[x + 2] and cellValues[x] == cellValues[x + 4]:
 					print(f"\nPlayer {currentPlayer + 1} wins")
 					return False
+	if fullBoard(cellValues):
+		print("\nThe board is full")
+		return False
+	
 	return True
 
 cellValues = None
@@ -97,4 +107,4 @@ while playAgain:
 			playAgain = False
 			break
 		else:
-			print("\nThat is not a valid answer")
+			print("\nThat is not a valid answer (yes/no)")
