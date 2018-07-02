@@ -29,12 +29,10 @@ def playerTurn(cellValues, currentPlayer):
 	valid = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 	cell = input(f"\nPlayer {currentPlayer + 1} where do you want to place your {players[currentPlayer]}?\n")
 	
-	while True:
-		if cell not in valid:
-			cell = input("\nThat is not a valid answer, please choose a valid one (pick any number from 1-9)\n")
-		else:
-			cell = int(cell)
-			break
+	while cell not in valid:
+		cell = input("\nThat is not a valid answer, please choose a valid one (pick any number from 1-9)\n")
+	else:
+		cell = int(cell)
 
 	
 	while cellValues[cell - 1] != " ":
@@ -76,6 +74,7 @@ def checkWinner(cellValues,currentPlayer):
 	return True
 
 cellValues = None
+answer = None
 players = ["", ""]
 stillPlaying = True
 playAgain = True
@@ -85,6 +84,7 @@ currentPlayer = random.randrange(0,2)
 
 while playAgain:
 	cellValues = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+	answer = None
 	print(f"\nPlayer {currentPlayer + 1} goes first\n")
 	drawBoard()
 
@@ -97,7 +97,7 @@ while playAgain:
 		else:
 			currentPlayer = 0 
 
-	while True:
+	while answer != "yes" and answer != "no":
 		answer = input("\nDo  you want to play another round?\n").lower()
 		if answer == "yes":
 			stillPlaying = True
@@ -106,5 +106,5 @@ while playAgain:
 		elif answer == "no":
 			playAgain = False
 			break
-		else:
-			print("\nThat is not a valid answer (yes/no)")
+		
+		print("\nThat is not a valid answer (yes/no)")
