@@ -1,2 +1,2 @@
 # pythonMilestoneProject1
-a milestone project from a python course
+A milestone project from a python course - A tic tac toe game
